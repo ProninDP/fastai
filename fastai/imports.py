@@ -29,8 +29,9 @@ def in_notebook(): return IPKernelApp.initialized()
 
 def in_ipynb():
     try:
-        cls = get_ipython().__class__.__name__
-        return cls == 'ZMQInteractiveShell'
+        #cls = get_ipython().__class__.__name__
+        #return cls == 'ZMQInteractiveShell'
+        return False
     except NameError:
         return False
 
