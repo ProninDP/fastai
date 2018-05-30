@@ -73,14 +73,14 @@ train_tri_wt.py --dir-path DIR_PATH --cuda-id CUDA_ID [--cl CL] [--bs BS] [--bac
 - `LR`: the learning rate
 - `SAMPLED`: whether a sampled softmax should be used (default: `True`)
 
-Then run `train_tri_lm.py` to fine-tune a language model pretrained on WikiText-103 data on the target task data.
+Then run `train_lm.py` to fine-tune a language model pretrained on WikiText-103 data on the target task data.
 
-Example command: `python train_tri_lm.py imdb 0 5`
+Example command: `python train_lm.py imdb 0 5`
 
 Usage:
 ```
-train_tri_lm.py PREFIX CUDA_ID [NC] [BS] [BACKWARDS] [STARTAT]
-train_tri_lm.py --prefix PREFIX --cuda-id CUDA_ID [--nc NC] [--bs BS] [--backwards BACKWARDS] [--startat STARTAT]
+train_lm.py PREFIX CUDA_ID [NC] [BS] [BACKWARDS] [STARTAT]
+train_lm.py --prefix PREFIX --cuda-id CUDA_ID [--nc NC] [--bs BS] [--backwards BACKWARDS] [--startat STARTAT]
 ```
 - `PREFIX`: the file path prefix in `data/nlp_clas/{prefix}`
 - `CUDA_ID`: the id of the GPU used for training the model; `-1` if no GPU is used
