@@ -23,11 +23,6 @@ from .models.fa_resnet import *
 import warnings
 warnings.filterwarnings('ignore', message='Implicit dimension choice', category=UserWarning)
 
-IS_TORCH_04 = LooseVersion(torch.__version__) >= LooseVersion('0.4')
-if IS_TORCH_04:
-    from torch.nn.init import kaiming_uniform_ as kaiming_uniform
-    from torch.nn.init import kaiming_normal_ as kaiming_normal
-
 def children(m): return m if isinstance(m, (list, tuple)) else list(m.children())
 def save_model(m, p): torch.save(m.state_dict(), p)
 def load_model(m, p):
