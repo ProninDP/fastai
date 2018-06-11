@@ -194,6 +194,7 @@ class LR_Finder(LR_Updater):
         plt.xlabel("learning rate (log scale)")
         plt.plot(self.lrs[n_skip:-(n_skip_end+1)], self.losses[n_skip:-(n_skip_end+1)])
         plt.xscale('log')
+        plt.savefig(os.path.join(self.save_path, 'lr_loss_plot.png'))
 
 class LR_Finder2(LR_Finder):
     """
