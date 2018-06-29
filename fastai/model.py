@@ -215,14 +215,13 @@ def batch_sz(x, seq_first=False):
     if is_listy(x): x = x[0]
     return x.shape[1 if seq_first else 0]
 
-def validate(stepper, dl, metrics):
+def validate(stepper, dl, metrics, seq_first=False):
     batch_cnts,loss,res = [],[],[]
     stepper.reset(False)
     with no_grad_context():
         for (*x,y) in iter(dl):
             preds, l = stepper.evaluate(VV(x), VV(y))
-            if isinstance(x,list): batch_cnts.append(len(x[0]))
-            else: batch_cnts.append(len(x))
+            batch_cnts.append(batch_sz(x, seq_first=seq_first))
             loss.append(to_np(l))
             res.append([f(preds.data, y) for f in metrics])
     return [np.average(loss, 0, weights=batch_cnts)] + list(np.average(np.stack(res), 0, weights=batch_cnts))
